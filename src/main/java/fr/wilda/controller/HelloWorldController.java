@@ -1,8 +1,5 @@
 package fr.wilda.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import fr.wilda.resource.HelloWorldCustomResource;
 import io.javaoperatorsdk.operator.api.Context;
 import io.javaoperatorsdk.operator.api.Controller;
@@ -14,21 +11,20 @@ import io.javaoperatorsdk.operator.api.UpdateControl;
 public class HelloWorldController implements ResourceController<HelloWorldCustomResource> {
 
   public static final String KIND = "HelloWorldCustomResource";
-  private static final Logger log = LoggerFactory.getLogger(HelloWorldController.class);
 
   public HelloWorldController() {
   }
 
   @Override
   public DeleteControl deleteResource(HelloWorldCustomResource resource, Context<HelloWorldCustomResource> context) {
-    log.info("Goodbye {} 😢", resource.getMetadata().getName());
+    System.out.println(String.format("Goodbye %s 😢", resource.getSpec().getName()));
     return DeleteControl.DEFAULT_DELETE;
   }
 
   @Override
   public UpdateControl<HelloWorldCustomResource> createOrUpdateResource(
     HelloWorldCustomResource resource, Context<HelloWorldCustomResource> context) {
-    log.info("Hello {} 🎉🎉 !!", resource.getMetadata().getName());
+    System.out.println(String.format("Hello %s 🎉🎉 !!", resource.getSpec().getName()));
 
     return UpdateControl.updateCustomResource(resource);
   }

@@ -8,5 +8,8 @@ public class HelloWorldRunner {
     public static void main(String[] args) {
       Operator operator = new Operator(DefaultConfigurationService.instance());
       operator.register(new HelloWorldController());
+
+      System.out.println("🚀 Starting HelloWorld operator !!! 🚀");
+      operator.start();
     }
   }

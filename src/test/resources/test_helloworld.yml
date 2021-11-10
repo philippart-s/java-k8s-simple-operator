@@ -1,0 +1,7 @@
+apiVersion: "fr.wilda/v1"
+kind: HelloWorldCustomResource
+metadata:
+  name: hello-world
+  namespace: test-hw-crd
+spec:
+  name: stef
