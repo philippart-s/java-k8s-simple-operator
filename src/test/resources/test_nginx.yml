@@ -1,0 +1,7 @@
+apiVersion: "fr.wilda/v1"
+kind: NginxInstallerResource
+metadata:
+  name: nginx-installer
+  namespace: test-nginx-operator
+spec:
+  replicas: 2
