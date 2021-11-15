@@ -43,10 +43,10 @@ public class NginxInstallerController implements ResourceController<NginxInstall
                     .watch(new Watcher<Deployment>() {
                         @Override
                         public void eventReceived(Action action, Deployment resource) {
-                            System.out.println("⚡ Event receive on watcher ! ⚡");
+                            System.out.println("⚡ Event receive on watcher ! ⚡ ➡️ " + action.name());
 
                             if (action == Action.DELETED) {
-                                System.out.println("🗑️ Deployment deleted, recreate it ! 🗑️");
+                                System.out.println("🗑️  Deployment deleted, recreate it ! 🗑️");
                                 k8sClient.apps().deployments().inNamespace(resource.getMetadata().getNamespace())
                                         .createOrReplace(deployment);
 
